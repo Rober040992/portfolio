@@ -41,11 +41,11 @@
   @keyframes fade-in {
     from {
       opacity: 0;
-      tramsform: translateY(20px)
+      transform: translateY(20px)
     }
     to{
       opacity: 1;
-      tramsform: translateY(0)
+      transform: translateY(0)
     }
   }
   @keyframes meteor {
@@ -88,7 +88,7 @@
     }
     * {
       @apply border-border;
-    };
+    }
     html {
       @apply scroll-smooth;
     }
@@ -132,7 +132,7 @@
     @apply relative rounded-md;
     background: linear-gradient(to right, hsl(var(--card)));
     background-clip: padding-box;
-    border: 1px solid transparent:
+    border: 1px solid transparent;
   }
 
   @utility cosmic-button {
