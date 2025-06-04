@@ -8,6 +8,13 @@ export const StarBackground = () => {
   useEffect(() => {
     generateStar();
     generateMeteor();
+
+    // ajusta la cantidad de stars segun el tamaño de la panalla
+    const handleResize = () => {
+        generateStar();
+    }
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
   }, []);
 
   // genera estrellas random segun el tamaño de pantalla. contine id x y opacity duracion
