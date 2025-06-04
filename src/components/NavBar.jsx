@@ -33,8 +33,8 @@ export const NavBar = () => {
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
         >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground"> RoDev</span>
+          <span className="relative z-10 opacity-0 animate-fade-in-delay-4">
+            <span className="text-glow text-foreground opacity-0 animate-fade-in-delay-4"> RoDev</span>
             Portfolio
           </span>
         </a>
