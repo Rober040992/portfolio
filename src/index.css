@@ -20,6 +20,8 @@
   --animate-fade-in-delay-5: fade-in 0.8s ease-out 1.2s forwards;
   --animate-fade-in-delay-6: fade-in 0.8s ease-out 1.7s forwards;
   --animate-fade-in-delay-7: fade-in 0.8s ease-out 3s forwards;
+  --animate-fade-in-delay-4s: fade-in 1s ease-out 4s forwards;
+  --animate-fade-in-delay-5s: fade-in 1s ease-out 5s forwards;
   --animate-meteor: meteor 5s linear infinite;
 }
 
@@ -152,7 +154,7 @@
 
   @utility cosmic-button {
     @apply px-6 p-1.5 rounded-full bg-primary text-primary-foreground font-medium transition-all 
-    duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)] hover:scale-105 active:scale-95
+    duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.9)] hover:scale-105 active:scale-95
   }
 
   @utility star {
