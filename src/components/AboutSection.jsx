@@ -30,7 +30,7 @@ export const AboutSection = () => {
               <a href="#contac" className="cosmic-button">
                 Get in Touch
               </a>
-              <a href="#contac" className="ghost-button">
+              <a href="./public/CV Roberto.pdf" className="ghost-button" download="CV Roberto.pdf">
                 Download my CV
               </a>
             </div>
