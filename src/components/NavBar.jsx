@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const navItems = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
@@ -16,16 +17,19 @@ export const NavBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
-    return window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <nav
       className={cn(
         "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backrop-blur-md shadow-xs" : "py-5"
+        isScrolled
+          ? "py-3 pr-6 bg-background/1 backdrop-blur-md shadow-xs"
+          : "py-8 pr-6"
       )}
     >
       <div className="container flex items-center justify-between">
@@ -34,7 +38,10 @@ export const NavBar = () => {
           href="#hero"
         >
           <span className="relative z-10 opacity-0 animate-fade-in-delay-4">
-            <span className="text-glow text-foreground opacity-0 animate-fade-in-delay-4"> RoDev</span>
+            <span className="text-glow text-foreground opacity-0 animate-fade-in-delay-4">
+              {" "}
+              RoDev
+            </span>
             Portfolio
           </span>
         </a>
