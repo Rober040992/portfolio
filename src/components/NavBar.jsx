@@ -23,6 +23,11 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // bloqueo de scroll al abrir menu
+  useEffect(() => {
+  document.body.style.overflow = isMenuOpen ? "hidden" : "";
+}, [isMenuOpen]);
+
   return (
     <nav
       className={cn(
@@ -39,7 +44,6 @@ export const NavBar = () => {
         >
           <span className="relative z-10 opacity-0 animate-fade-in-delay-4">
             <span className="text-glow text-foreground opacity-0 animate-fade-in-delay-4">
-              {" "}
               RoDev
             </span>
             Portfolio
@@ -70,7 +74,7 @@ export const NavBar = () => {
 
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
+            "absolute top-0 left-0 w-screen h-screen bg-background/95 backdrop-blur-md z-50 flex flex-col items-center justify-center",
             "transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
