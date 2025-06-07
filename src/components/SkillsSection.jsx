@@ -3,22 +3,22 @@ import { cn } from "@/lib/utils";
 
 const skills = [
   { name: "JavaScript (ES6+)", level: 65, category: "Fullstack" },
-  { name: "Node.js", level: 75, category: "Backend" },
-  { name: "React", level: 65, category: "Frontend" },
-  { name: "MongoDB", level: 80, category: "Backend" },
+  { name: "Node.js", level: 55, category: "Backend" },
+  { name: "React", level: 50, category: "Frontend" },
+  { name: "MongoDB", level: 60, category: "Backend" },
   { name: "SQL", level: 20, category: "Backend" },
   { name: "HTML/CSS", level: 80, category: "Frontend" },
-  { name: "Express.js", level: 70, category: "Backend" },
-  { name: "Tailwind CSS", level: 80, category: "Frontend" },
-  { name: "Mongoose", level: 90, category: "Backend" },
+  { name: "Express.js", level: 40, category: "Backend" },
+  { name: "Tailwind CSS", level: 70, category: "Frontend" },
+  { name: "Mongoose", level: 50, category: "Backend" },
   { name: "Zod", level: 50, category: "Backend" },
   { name: "Axios", level: 60, category: "Frontend" },
-  { name: "Socket.io / WebSockets", level: 20, category: "Fullstack" },
-  { name: "Git y GitHub", level: 60, category: "Tools" },
+  { name: "Socket.io / WebSockets", level: 25, category: "Fullstack" },
+  { name: "Git y GitHub", level: 75, category: "Tools" },
   { name: "AWS EC2", level: 40, category: "DevOps" },
   { name: "Bash", level: 30, category: "DevOps" },
-  { name: "TypeScript", level: 20, category: "Frontend" },
-  { name: "VS Code", level: 90, category: "Tools" },
+  { name: "TypeScript", level: 15, category: "Frontend" },
+  { name: "VS Code", level: 80, category: "Tools" },
 ];
 
 const categories = [
@@ -47,7 +47,7 @@ export const SkillsSection = () => {
               key={key}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
+                "px-5 py-2 rounded-full transition-colors duration-300 capitalize cursor-pointer hover:text-primary duration-300",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary/70 text-foreground hover:bg-secondary"
