@@ -1,4 +1,4 @@
-import { ArrowBigRight, ExternalLink, GithubIcon } from "lucide-react";
+import { ArrowBigRight, ExternalLink, Github, GithubIcon } from "lucide-react";
 
 const projects = [
   {
@@ -41,13 +41,13 @@ export const ProjectsSection = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
           Featured<span className="text-primary"> Projects</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-7 max-w-3xl mx-auto">
           A glimpse into the work. I'm most proud of creative solutions,
           real-world challenges, and clean code.
-          <span className="text-primary font-bold">
-            Have a look the projects below
-          </span>
         </p>
+        <div className="text-primary font-bold text-2xl mb-7">
+          Have a look the projects below.
+        </div>
         {/*projects cards*/}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, key) => (
@@ -110,6 +110,7 @@ export const ProjectsSection = () => {
           >
             <ArrowBigRight size={25} />
             Check my GitHub
+            <Github size={20}/>
           </a>
         </div>
       </div>
