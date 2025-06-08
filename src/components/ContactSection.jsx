@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useToast } from "./hooks/use-toast";
+import emailjs from "emailjs-com";
 import {
   GithubIcon,
   LinkedinIcon,
@@ -12,11 +13,30 @@ import { useState } from "react";
 
 export const ContactSection = () => {
   const { toast } = useToast();
-  const [ isSubmitting, setIsSubmitting ] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const service = import.meta.env.VITE_SERVICE_ID;
+  const template = import.meta.env.VITE_TEMPLATE_ID;
+  const publickey = import.meta.env.VITE_PUBLIC_KEY;
 
   const handelSubmit = (event) => {
     event.preventDefault();
     setIsSubmitting(true);
+
+    emailjs
+      .sendForm(service, template, event.target, publickey)
+      .then((result) => {
+        setFormData({name: "", email: "", message: ""})
+      })
+      .catch(() => {
+        alert("Ooops! Something went wrong");
+      });
+
     setTimeout(() => {
       toast({
         title: "Message sent successfully!",
@@ -128,7 +148,11 @@ export const ContactSection = () => {
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
                   required
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   placeholder="Roberto ..."
                   className={cn(
                     "w-full px-4 py-3 rounded-md border border-input bg-background",
@@ -148,6 +172,10 @@ export const ContactSection = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   required
                   placeholder="rgfrasta@gmail.com"
                   className={cn(
@@ -167,6 +195,10 @@ export const ContactSection = () => {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                   required
                   placeholder="Hi Roberto! I'd like to talk about ..."
                   className={cn(
