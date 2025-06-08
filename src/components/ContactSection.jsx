@@ -1,23 +1,30 @@
 import { cn } from "@/lib/utils";
-
+import { useToast } from "./hooks/use-toast";
 import {
   GithubIcon,
-  Linkedin,
   LinkedinIcon,
   Mail,
   MapPin,
   Phone,
   Send,
 } from "lucide-react";
+import { useState } from "react";
 
 export const ContactSection = () => {
+  const { toast } = useToast();
+  const [ isSubmitting, setIsSubmitting ] = useState(false);
 
-    const handelSubmit = (event) => {
-        event.preventDefault()
-        setTimeout(() => {
-            
-        },2000)
-    }
+  const handelSubmit = (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      toast({
+        title: "Message sent successfully!",
+        description: "Thanks for your message! I will reply ASAP",
+      });
+      setIsSubmitting(false);
+    }, 1000);
+  };
   return (
     <section id="contact" className="py-24 px4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -103,7 +110,10 @@ export const ContactSection = () => {
           </div>
 
           {/* Columna derecha: Contact Form */}
-          <div className="bg-card/80 p-8 rounded-lg shadow-xs">
+          <div
+            className="bg-card/80 p-8 rounded-lg shadow-xs"
+            onSubmit={handelSubmit}
+          >
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
             <form action="" className="space-y-6">
               {/*name  */}
@@ -166,13 +176,14 @@ export const ContactSection = () => {
                 />
               </div>
               <button
+                disabled={isSubmitting}
                 type="submit"
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2 cursor-pointer",
-
+                  "cosmic-button w-full flex items-center justify-center gap-2 cursor-pointer"
                 )}
               >
-                Send<Send size={15}/>
+                {isSubmitting ? "Sending..." : "Send"}
+                <Send size={15} />
               </button>
             </form>
           </div>
