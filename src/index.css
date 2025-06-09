@@ -154,7 +154,7 @@
 
   @utility cosmic-button {
     @apply px-6 p-1.5 rounded-full bg-primary text-primary-foreground font-medium transition-all 
-    duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.9)] hover:scale-105 active:scale-95
+    duration-300 hover:shadow-[0_0_8px_rgba(139,92,246,0.6)] hover:scale-[1.035] active:scale-95;
   }
 
   @utility ghost-button {
