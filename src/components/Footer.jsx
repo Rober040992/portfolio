@@ -2,7 +2,7 @@ import { ArrowUpCircleIcon } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="py-12 px-10 bg-card/80 relative border-t border-border mt-10 pt-4 flex flex-wrap justify-between items-center">
+    <footer className="py-6 px-10 bg-card/50 relative border-t border-border mt-10 pt-4 flex flex-wrap justify-between items-center">
       <p className="text-sm ">
         &copy; {new Date().getFullYear()} Portfolio design inspired by{" "}
         <a
