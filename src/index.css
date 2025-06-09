@@ -81,7 +81,7 @@
 
   @layer base{
     :root{
-      --background: 210 40% 98%;
+      --background: 209 90% 80%;
       --foreground: 222 47% 11%;
 
       --card: 0 0% 100%;
@@ -177,3 +177,16 @@
     padding: 0;
     text-align: center; 
   }
+
+  /*keyframe para la animacion de las nubes*/
+  @keyframes cloud {
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+.animate-cloud {
+  animation: cloud linear infinite;
+}
