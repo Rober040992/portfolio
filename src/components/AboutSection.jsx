@@ -27,11 +27,11 @@ export const AboutSection = () => {
               corrupti cum! Quibusdam cumque impedit voluptas!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contac" className="cosmic-button">
+              <a href="#contact" className="cosmic-button">
                 Get in Touch
               </a>
               <a
-                href="./public/CV Roberto.pdf"
+                href="/CV Roberto.pdf"
                 className="ghost-button"
                 download="CV Roberto.pdf"
               >
