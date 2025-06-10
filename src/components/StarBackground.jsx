@@ -61,7 +61,9 @@ export const StarBackground = () => {
   return (
     // Contenedor absoluto que cubre toda la pantalla
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Renderizamos cada estrella como un div posicionado absolutamente */}
+      {/* animacion de barra del scroll superior*/}
+      <div className="scroll-watcher"></div>
+      {/* Renderiza cada estrella como un div posicionado absolutamente */}
       {stars.map((star) => (
         <div
           key={star.id}

@@ -23,6 +23,8 @@ export const DayBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      {/* animacion de barra del scroll superior*/}
+      <div className="scroll-watcher"></div>
       {/* Sol */}
       <div className="absolute top-10 left-10 w-32 h-32 bg-yellow-300 rounded-full shadow-xl animate-float blur-xs" />
 

@@ -190,3 +190,22 @@
 .animate-cloud {
   animation: cloud linear infinite;
 }
+
+/* seccion de barra de scroll en el top*/
+.scroll-watcher {
+  height: 1%;
+  margin-top: 20px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(to right, rgb(233, 230, 230), rgb(77, 16, 141));
+  width: 100%;
+  scale: 0 1;
+  transform-origin: left;
+  animation: scroll-watcher linear; 
+  animation-timeline: scroll();
+}
+
+@keyframes scroll-watcher {
+  to {scale: 1 1}
+}
