@@ -11,5 +11,11 @@
       "Self-taught, still in progress but already building what I used to only imagine.",
       "Learning to think full stack, falling in love with Node, React and Deploy along the way."
     ]
+  },
+  "about": {
+    "about": "About",
+    "me": "Me",
+    "download": "Download my CV",
+    "touch": "Get in touch"    
   }
 }

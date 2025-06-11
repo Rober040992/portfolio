@@ -1,11 +1,13 @@
 import { Briefcase, Code, User } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 export const AboutSection = () => {
+  const { t } = useTranslation()
   return (
     <section id="about" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-14 text-center">
-          About <span className="text-primary">Me</span>
+          {t("about.about")} <span className="text-primary">{t("about.me")}</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -28,14 +30,14 @@ export const AboutSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
               <a href="#contact" className="cosmic-button">
-                Get in Touch
+                {t("about.touch")}
               </a>
               <a
                 href="/CV Roberto.pdf"
                 className="ghost-button"
                 download="CV Roberto.pdf"
               >
-                Download my CV
+                {t("about.download")}
               </a>
             </div>
           </div>
