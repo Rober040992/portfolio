@@ -35,7 +35,19 @@
     "skills": "Habilidades",
     "projects": "Proyectos",
     "contact": "Contacto"
-}
+  },
+  "skillsSection": {
+    "my": "Mis",
+    "skills": "Habilidades",
+    "categories": {
+      "all": "Todas",
+      "fullstack": "Fullstack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "tools": "Herramientas",
+      "devops": "DevOps"
+    }
+  }
 }
 
 

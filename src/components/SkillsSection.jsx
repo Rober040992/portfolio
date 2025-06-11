@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 const skills = [
   { name: "JavaScript (ES6+)", level: 65, category: "Fullstack" },
@@ -21,39 +22,42 @@ const skills = [
   { name: "VS Code", level: 80, category: "Tools" },
 ];
 
-const categories = [
-  "All",
-  "Fullstack",
-  "Backend",
-  "Frontend",
-  "Tools",
-  "DevOps",
-];
-
 export const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const filteredSkills = skills.filter((skill) => activeCategory === "All" || skill.category === activeCategory);
+  const categories = [
+    { key: "all", value: "All" },
+    { key: "fullstack", value: "Fullstack" },
+    { key: "backend", value: "Backend" },
+    { key: "frontend", value: "Frontend" },
+    { key: "tools", value: "Tools" },
+    { key: "devops", value: "DevOps" },
+  ];
+  const [activeCategory, setActiveCategory] = useState("all");
+  const filteredSkills = skills.filter(
+    (skill) => activeCategory === "all" || skill.category.toLowerCase() === activeCategory.toLowerCase()
+  );
+  const { t } = useTranslation();
 
   return (
     <section id="skills" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          My <span className="text-primary">Skills</span>
+          {t("skillsSection.my")}{" "}
+          <span className="text-primary">{t("skillsSection.skills")}</span>
         </h2>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, key) => (
+          {categories.map(({ key }) => (
             <button
               key={key}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => setActiveCategory(key)}
               className={cn(
                 "px-5 py-2 rounded-full transition-colors duration-300 capitalize cursor-pointer hover:text-primary",
-                activeCategory === category
+                activeCategory === key
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary/70 text-foreground hover:bg-secondary"
               )}
             >
-              {category}
+              {t(`skillsSection.categories.${key}`)}
             </button>
           ))}
         </div>

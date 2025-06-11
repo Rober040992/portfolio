@@ -28,12 +28,24 @@
     "uiuxDesc": "Designing intuitive and inclusive user experiences focused on usability and clarity",
     "teamTitle": "Team Collaboration",
     "teamDesc": "Working in agile teams, applying Git and GitHub for efficient collaboration"
-},
+  },
   "navbar": {
     "home": "Home",
     "about": "About",
     "skills": "Skills",
     "projects": "Projects",
     "contact": "Contact"
-}
+  },
+  "skillsSection": {
+    "my": "My",
+    "skills": "Skills",
+    "categories": {
+      "all": "All",
+      "fullstack": "Fullstack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "tools": "Tools",
+      "devops": "DevOps"
+  }
+  }
 }
