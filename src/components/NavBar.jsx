@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { LangToggle } from "../lib/langToggle";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -25,8 +27,8 @@ export const NavBar = () => {
 
   // bloqueo de scroll al abrir menu
   useEffect(() => {
-  document.body.style.overflow = isMenuOpen ? "hidden" : "";
-}, [isMenuOpen]);
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+  }, [isMenuOpen]);
 
   return (
     <nav
@@ -42,8 +44,8 @@ export const NavBar = () => {
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
         >
-          <span className="relative z-10 opacity-0 animate-fade-in-delay-4">
-            <span className="text-glow text-foreground opacity-0 animate-fade-in-delay-4">
+          <span className="relative z-10 opacity-0 animate-fade-in-delay-2">
+            <span className="text-glow text-foreground opacity-0 animate-fade-in-delay-2">
               RoDev
             </span>
             Portfolio
@@ -51,12 +53,12 @@ export const NavBar = () => {
         </a>
 
         {/* desktop nav menu*/}
-        <div className="hidden md:flex space-x-7">
+        <div className="hidden md:flex space-x-7 ">
           {navItems.map((item, key) => (
             <a
               key={key}
               href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              className="text-foreground/80 hover:text-primary transition-colors duration-300 opacity-0 animate-fade-in-delay-3"
             >
               {item.name}
             </a>
@@ -66,11 +68,14 @@ export const NavBar = () => {
         {/* (prev) => !prev) alternamos el valor dependiendo del prev*/}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
+          className="md:hidden p-2 text-foreground z-50 opacity-0 animate-fade-in-delay-3"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
+
+        <LangToggle className=""/>
+        <ThemeToggle />
 
         <div
           className={cn(

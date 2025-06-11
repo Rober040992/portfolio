@@ -1,0 +1,15 @@
+{
+  "heroSection": {
+    "hi": "Hi, I'm",
+    "scroll": "Scroll",
+    "checkMyWork": "Check my Work!",
+    "phrases": [
+      "Forever learning, always building. This is where my journey as a developer begins.",
+      "Building both sides of the web one backend route and one frontend component at a time.",
+      "Learning to build the professional webs, to become better.",
+      "Still a learner, but already solving problems from backend to frontend.",
+      "Self-taught, still in progress but already building what I used to only imagine.",
+      "Learning to think full stack, falling in love with Node, React and Deploy along the way."
+    ]
+  }
+}
