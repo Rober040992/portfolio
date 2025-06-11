@@ -3,17 +3,17 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LangToggle } from "../lib/langToggle";
-
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  //{ name: "Experience", href: "#experience" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-];
+import { useTranslation } from 'react-i18next';
 
 export const NavBar = () => {
+  const { t } = useTranslation();
+  const navItems = [
+  { name: t("navbar.home"), href: "#hero" },
+  { name: t("navbar.about"), href: "#about" },
+  { name: t("navbar.skills"), href: "#skills" },
+  { name: t("navbar.projects"), href: "#projects" },
+  { name: t("navbar.contact"), href: "#contact" },
+];
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

@@ -16,6 +16,15 @@
     "about": "About",
     "me": "Me",
     "download": "Download my CV",
-    "touch": "Get in touch"    
-  }
+    "touch": "Get in touch"
+    
+    
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+}
 }
