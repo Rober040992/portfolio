@@ -16,10 +16,19 @@
     "about": "About",
     "me": "Me",
     "download": "Download my CV",
-    "touch": "Get in touch"
-    
-    
+    "touch": "Get in touch",
+    "title": "Passionate developer building functional, clean and modern web apps",
+    "1paragraph": "With experience in both backend and frontend development, I enjoy turning complex problems into simple, scalable solutions. From designing RESTful APIs with Node.js and Express to creating elegant interfaces with React and TailwindCSS, I strive to build products that are fast, accessible, and user-friendly.",
+    "2paragraph": "I'm passionate about continuous learning, collaboration, and delivering high-quality code. Currently focused on mastering advanced JavaScript, full-stack architecture, and deployment on cloud platforms like AWS or using tools like Vercel. I love what I do and I’m always looking for new challenges to grow as a developer."
   },
+  "services": {
+    "webDevTitle": "Web Development",
+    "webDevDesc": "Creating modern websites and web apps using modern tools",
+    "uiuxTitle": "UI/UX",
+    "uiuxDesc": "Designing intuitive and inclusive user experiences focused on usability and clarity",
+    "teamTitle": "Team Collaboration",
+    "teamDesc": "Working in agile teams, applying Git and GitHub for efficient collaboration"
+},
   "navbar": {
     "home": "Home",
     "about": "About",

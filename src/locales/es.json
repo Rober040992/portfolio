@@ -16,10 +16,18 @@
     "about": "Sobre",
     "me": "Mi",
     "download": "Descarga mi CV",
-    "touch": "Contacto"
-
-    
-
+    "touch": "Contacto",
+    "title": "Apasionado por crear aplicaciones web funcionales, limpias y modernas",
+    "1paragraph": "  Con experiencia tanto en el desarrollo backend como frontend, disfruto convertir problemas complejos en soluciones simples y escalables. Desde diseñar APIs RESTful con Node.js y Express hasta construir interfaces elegantes con React y TailwindCSS, me esfuerzo por crear productos rápidos, accesibles y fáciles de usar.",
+    "2paragraph": "  Me apasiona el aprendizaje continuo, el trabajo en equipo y la entrega de código de alta calidad. Actualmente estoy enfocado en perfeccionar mis conocimientos en JavaScript avanzado, arquitectura full-stack y despliegue en plataformas en la nube como AWS. Amo lo que hago y siempre busco nuevos retos para seguir creciendo como desarrollador."
+  },
+  "services": {
+    "webDevTitle": "Desarrollo Web",
+    "webDevDesc": "Creación de sitios y aplicaciones web modernas usando herramientas actuales",
+    "uiuxTitle": "UI/UX",
+    "uiuxDesc": "Diseño de experiencias intuitivas e inclusivas centradas en la usabilidad y la claridad",
+    "teamTitle": "Colaboración en Equipo",
+    "teamDesc": "Trabajo en equipos ágiles, aplicando Git y GitHub para colaborar eficientemente"
   },
   "navbar": {
     "home": "Inicio",
