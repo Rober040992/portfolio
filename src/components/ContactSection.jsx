@@ -26,12 +26,16 @@ export const ContactSection = () => {
 
   const handelSubmit = (event) => {
     event.preventDefault();
+    //honey pot detector
+    const honeypotValue = event.target.honeypot.value;
+    if (honeypotValue) return; // bot detectado, a tomar por ····
+
     setIsSubmitting(true);
 
     emailjs
       .sendForm(service, template, event.target, publickey)
       .then((result) => {
-        setFormData({name: "", email: "", message: ""})
+        setFormData({ name: "", email: "", message: "" });
       })
       .catch(() => {
         alert("Ooops! Something went wrong");
@@ -136,6 +140,14 @@ export const ContactSection = () => {
           >
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
             <form action="" className="space-y-6">
+              {/* Honeypot */}
+              <input
+                type="text"
+                name="honeypot"
+                style={{ display: "none" }}
+                tabIndex="-1"
+                autoComplete="off"
+              />
               {/*name  */}
               <div>
                 <label
