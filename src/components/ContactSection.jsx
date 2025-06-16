@@ -9,6 +9,7 @@ import {
   Phone,
   Send,
 } from "lucide-react";
+import { canSendEmail, updateEmailTimestamp } from "@/lib/rateLimiter";
 import { useState } from "react";
 
 export const ContactSection = () => {
@@ -29,13 +30,22 @@ export const ContactSection = () => {
     //honey pot detector
     const honeypotValue = event.target.honeypot.value;
     if (honeypotValue) return; // bot detectado, a tomar por ····
+    // rete limiter, Comprueba si ha pasado suficiente tiempo
+    if (!canSendEmail()) {
+      toast({
+        title: "Wait a bit",
+        description: "Please wait before sending again.",
+      });
+      return;
+    }
 
     setIsSubmitting(true);
 
     emailjs
       .sendForm(service, template, event.target, publickey)
-      .then((result) => {
-        setFormData({ name: "", email: "", message: "" });
+      .then(() => {
+        setFormData({ name: "", email: "", message: "" }); // 3. Limpiamos el formulario
+        updateEmailTimestamp(); // Guarda en localStorage la fecha y hora del último envío exitoso
       })
       .catch(() => {
         alert("Ooops! Something went wrong");
@@ -49,6 +59,7 @@ export const ContactSection = () => {
       setIsSubmitting(false);
     }, 1000);
   };
+  
   return (
     <section id="contact" className="py-24 px4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
