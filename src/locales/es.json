@@ -64,6 +64,25 @@
     "purpleTitle": "Destacados",
     "intro": "Echa un vistazo a mis trabajos. Me enorgullezco especialmente de las soluciones creativas, los desafíos del mundo real y el código limpio.",
     "have": "Echa un ojo a mis proyectos aqui abajo"
+  },
+  "contactSection": {
+    "titleWhite": "Ponte en",
+    "titlePrimary": "Contacto",
+    "intro": "No dudes en escribirme para lo que necesites. Estoy abierto a trabajar o hablar sobre nuevas oportunidades.",
+    "connect": "¡Conecta conmigo!",
+    "email": "Correo electrónico",
+    "phone": "Número de teléfono",
+    "location": "Ubicación",
+    "locationValue": "Jaén, España",
+    "contactMe": "Contáctame",
+    "sendMessage": "Enviar un mensaje",
+    "yourName": "Tu nombre",
+    "yourEmail": "Tu correo",
+    "yourMessage": "Tu mensaje",
+    "sending": "Enviando...",
+    "send": "Enviar",
+    "toastTitle": "¡Mensaje enviado correctamente!",
+    "toastDescription": "Gracias por tu mensaje. Te responderé lo antes posible."
   }
 }
 

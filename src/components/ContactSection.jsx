@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { canSendEmail, updateEmailTimestamp } from "@/lib/rateLimiter";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -20,6 +21,7 @@ export const ContactSection = () => {
     email: "",
     message: "",
   });
+  const { t } = useTranslation();
 
   const service = import.meta.env.VITE_SERVICE_ID;
   const template = import.meta.env.VITE_TEMPLATE_ID;
@@ -53,29 +55,31 @@ export const ContactSection = () => {
 
     setTimeout(() => {
       toast({
-        title: "Message sent successfully!",
-        description: "Thanks for your message! I will reply ASAP",
+        title: t("contactSection.toastTitle"),
+        description: t("contactSection.toastDescription"),
       });
       setIsSubmitting(false);
     }, 1000);
   };
-  
+
   return (
     <section id="contact" className="py-24 px4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary">Touch</span>
+          {t("contactSection.titleWhite")}{" "}
+          <span className="text-primary">
+            {t("contactSection.titlePrimary")}
+          </span>{" "}
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Feel free to contact me what ever you need! I am open to work or
-          discuss new opportunities.
+          {t("contactSection.intro")}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Columna izquierda: Contact Info */}
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold mb-6 text-primary">
-              Connect with me!
+              {t("contactSection.connect")}
             </h3>
             <div className="space-y-6 justify-center">
               {/* Email */}
@@ -84,7 +88,7 @@ export const ContactSection = () => {
                   <Mail className="h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-medium">Email</h4>
+                  <h4 className="font-medium">{t("contactSection.email")}</h4>
                   <a
                     href="mailto:rgfrasta@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -100,7 +104,7 @@ export const ContactSection = () => {
                   <Phone className="h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-medium">Phone number</h4>
+                  <h4 className="font-medium">{t("contactSection.phone")}</h4>
                   <a
                     href="tel:+34 633621367"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -116,14 +120,14 @@ export const ContactSection = () => {
                   <MapPin className="h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-medium">Location</h4>
-                  <p className="text-muted-foreground">Jaén, Spain</p>
+                  <h4 className="font-medium">{t("contactSection.location")}</h4>
+                  <p className="text-muted-foreground">{t("contactSection.locationValue")}</p>
                 </div>
               </div>
 
               {/* Contact Links */}
               <div className="pt-8">
-                <h4 className="font-medium mb-4">Contact me</h4>
+                <h4 className="font-medium mb-4">{t("contactSection.contactMe")}</h4>
                 <div className="flex space-x-4 justify-center">
                   <a
                     href="https://www.linkedin.com/in/roberto-gomez-fabrega-5a694516a/"
@@ -149,7 +153,7 @@ export const ContactSection = () => {
             className="bg-card/80 p-8 rounded-lg shadow-xs"
             onSubmit={handelSubmit}
           >
-            <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
+            <h3 className="text-2xl font-semibold mb-6">{t("contactSection.sendMessage")}</h3>
             <form action="" className="space-y-6">
               {/* Honeypot */}
               <input
@@ -165,7 +169,7 @@ export const ContactSection = () => {
                   htmlFor="name"
                   className="block text-sm text-start font-medium mb-2 ml-3"
                 >
-                  Your Name
+                  {t("contactSection.yourName")}
                 </label>
                 <input
                   type="text"
@@ -189,7 +193,7 @@ export const ContactSection = () => {
                   htmlFor="name"
                   className="block text-sm text-start font-medium mb-2 ml-3"
                 >
-                  Your Email
+                  {t("contactSection.yourEmail")}
                 </label>
                 <input
                   type="email"
@@ -213,7 +217,7 @@ export const ContactSection = () => {
                   htmlFor="message"
                   className="block text-sm text-start font-medium mb-2 ml-3"
                 >
-                  Your Message
+                  {t("contactSection.yourMessage")}
                 </label>
                 <textarea
                   id="message"
@@ -237,7 +241,7 @@ export const ContactSection = () => {
                   "cosmic-button w-full flex items-center justify-center gap-2 cursor-pointer"
                 )}
               >
-                {isSubmitting ? "Sending..." : "Send"}
+                {isSubmitting ? t("contactSection.sending") : t("contactSection.send")}
                 <Send size={15} />
               </button>
             </form>

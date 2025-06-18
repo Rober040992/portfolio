@@ -64,5 +64,24 @@
     "purpleTitle": "Projects",
     "intro": "A glimpse into the work. I'm most proud of creative solutions, real-world challenges, and clean code.",
     "have": "Have a look the projects below."
+  },
+  "contactSection": {
+    "titleWhite": "Get In",
+    "titlePrimary": "Touch",
+    "intro": "Feel free to contact me what ever you need! I am open to work or discuss new opportunities.",
+    "connect": "Connect with me!",
+    "email": "Email",
+    "phone": "Phone number",
+    "location": "Location",
+    "locationValue": "Jaén, Spain",
+    "contactMe": "Contact me",
+    "sendMessage": "Send a Message",
+    "yourName": "Your Name",
+    "yourEmail": "Your Email",
+    "yourMessage": "Your Message",
+    "sending": "Sending...",
+    "send": "Send",
+    "toastTitle": "Message sent successfully!",
+    "toastDescription": "Thanks for your message! I will reply ASAP"
   }
 }
