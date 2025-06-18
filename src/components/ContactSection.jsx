@@ -9,7 +9,7 @@ import {
   Phone,
   Send,
 } from "lucide-react";
-import { canSendEmail, updateEmailTimestamp } from "@/lib/rateLimiter";
+import { canSendEmail, updateEmailTimestamp } from "../lib/ratelimiter";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
