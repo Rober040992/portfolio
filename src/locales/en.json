@@ -46,6 +46,23 @@
       "frontend": "Frontend",
       "tools": "Tools",
       "devops": "DevOps"
-  }
+    }
+  },
+  "projectSection": {
+    "projects": {
+      "bananaPeels": {
+        "title": "BananaPeels, buy or sell your furniture.",
+        "description": "BananaPeels is a second-hand marketplace web platform where users can securely post, browse, and manage ads quickly and easily."
+      },
+      "calculator": {
+        "title": "Calculator",
+        "description": "It is a mini project in order to practicing vanilla JS and HTML/CSS"
+      }
+    },
+    "chekGit": "All my projects in ",
+    "whiteTitle": "Featured",
+    "purpleTitle": "Projects",
+    "intro": "A glimpse into the work. I'm most proud of creative solutions, real-world challenges, and clean code.",
+    "have": "Have a look the projects below."
   }
 }
