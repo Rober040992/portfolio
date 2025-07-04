@@ -12,12 +12,20 @@ const projects = [
   },
   {
     id: 2,
+    key: "men-api-scaffold",
+    image: "/projects/men-api.png",
+    tags: ["JavaScript", "Node"],
+    demoUrl: "https://www.npmjs.com/package/men-api-scaffold",
+    githubUrl: "https://github.com/Rober040992/myNode-express-updated-scaffold",
+  },
+  {
+    id: 3,
     key: "calculator",
     image: "/projects/calculator.png",
     tags: ["JavaScript", "HTML", "CSS"],
     demoUrl: "#",
     githubUrl: "https://github.com/Rober040992/MyOwn-JS-Calculator",
-  },
+  }
 ];
 
 export const ProjectsSection = () => {

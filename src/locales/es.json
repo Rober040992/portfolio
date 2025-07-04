@@ -54,6 +54,10 @@
         "title": "BananaPeels, compra o vende tus muebles.",
         "description": "BananaPeels es una plataforma web de compraventa de segunda mano donde los usuarios pueden publicar, explorar y gestionar anuncios de forma segura, rápida y sencilla."
       },
+      "men-api-scaffold": {
+        "title": "Paquete NPM",
+        "description": "Un scaffold ligero y funcional para crear APIs con la arquitectura MEN (MongoDB - Express - Node.js) pensado para quienes quieren empezar rápido, con una base sólida y limpia."
+      },
       "calculator": {
         "title": "Calculadora",
         "description": "Mini projecto para la práctica de JS, HTML/CSS vanilla."
