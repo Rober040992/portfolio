@@ -51,7 +51,7 @@ export const SkillsSection = () => {
               key={key}
               onClick={() => setActiveCategory(key)}
               className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize cursor-pointer hover:text-primary",
+                "px-5 py-2 rounded-full transition-colors duration-300 capitalize cursor-pointer hover:text-violet-300",
                 activeCategory === key
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary/70 text-foreground hover:bg-secondary"
