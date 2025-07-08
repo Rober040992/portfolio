@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import { useToast } from "./hooks/use-toast";
-import emailjs from "emailjs-com";
 import {
   GithubIcon,
   LinkedinIcon,
@@ -9,7 +8,6 @@ import {
   Phone,
   Send,
 } from "lucide-react";
-import { canSendEmail, updateEmailTimestamp } from "../lib/ratelimiter";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -23,43 +21,46 @@ export const ContactSection = () => {
   });
   const { t } = useTranslation();
 
-  const service = import.meta.env.VITE_SERVICE_ID;
-  const template = import.meta.env.VITE_TEMPLATE_ID;
-  const publickey = import.meta.env.VITE_PUBLIC_KEY;
-
-  const handelSubmit = (event) => {
+  const handelSubmit = async (event) => {
     event.preventDefault();
-    //honey pot detector
-    const honeypotValue = event.target.honeypot.value;
-    if (honeypotValue) return; // bot detectado, a tomar por ····
-    // rete limiter, Comprueba si ha pasado suficiente tiempo
-    if (!canSendEmail()) {
-      toast({
-        title: "Wait a bit",
-        description: "Please wait before sending again.",
-      });
-      return;
-    }
-
     setIsSubmitting(true);
 
-    emailjs
-      .sendForm(service, template, event.target, publickey)
-      .then(() => {
-        setFormData({ name: "", email: "", message: "" }); // 3. Limpiamos el formulario
-        updateEmailTimestamp(); // Guarda en localStorage la fecha y hora del último envío exitoso
-      })
-      .catch(() => {
-        alert("Ooops! Something went wrong");
+    const form = event.target;
+    const honeypotValue = form.honeypot.value;
+
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      honeypotValue: honeypotValue,
+    };
+
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
 
-    setTimeout(() => {
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error sending message");
+      }
+
+      setFormData({ name: "", email: "", message: "" });
       toast({
         title: t("contactSection.toastTitle"),
         description: t("contactSection.toastDescription"),
       });
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Error",
+        description: error.message,
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -120,14 +121,20 @@ export const ContactSection = () => {
                   <MapPin className="h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-medium">{t("contactSection.location")}</h4>
-                  <p className="text-muted-foreground">{t("contactSection.locationValue")}</p>
+                  <h4 className="font-medium">
+                    {t("contactSection.location")}
+                  </h4>
+                  <p className="text-muted-foreground">
+                    {t("contactSection.locationValue")}
+                  </p>
                 </div>
               </div>
 
               {/* Contact Links */}
               <div className="pt-8">
-                <h4 className="font-medium mb-4">{t("contactSection.contactMe")}</h4>
+                <h4 className="font-medium mb-4">
+                  {t("contactSection.contactMe")}
+                </h4>
                 <div className="flex space-x-4 justify-center">
                   <a
                     href="https://www.linkedin.com/in/roberto-gomez-fabrega-5a694516a/"
@@ -153,7 +160,9 @@ export const ContactSection = () => {
             className="bg-card/80 p-8 rounded-lg shadow-xs"
             onSubmit={handelSubmit}
           >
-            <h3 className="text-2xl font-semibold mb-6">{t("contactSection.sendMessage")}</h3>
+            <h3 className="text-2xl font-semibold mb-6">
+              {t("contactSection.sendMessage")}
+            </h3>
             <form action="" className="space-y-6">
               {/* Honeypot */}
               <input
@@ -241,7 +250,9 @@ export const ContactSection = () => {
                   "cosmic-button w-full flex items-center justify-center gap-2 cursor-pointer"
                 )}
               >
-                {isSubmitting ? t("contactSection.sending") : t("contactSection.send")}
+                {isSubmitting
+                  ? t("contactSection.sending")
+                  : t("contactSection.send")}
                 <Send size={15} />
               </button>
             </form>
