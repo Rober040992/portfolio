@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { recaptchaReady } from "../main";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -46,28 +47,24 @@ export const ContactSection = () => {
 
     let token = "";
 
-    if (window.grecaptcha && window.grecaptcha.execute) {
-      try {
+    try {
+      // Espera a que el script esté listo
+      await recaptchaReady;
+      if (window.grecaptcha && window.grecaptcha.execute) {
         await new Promise((resolve) => {
           window.grecaptcha.ready(resolve);
         });
-
         token = await window.grecaptcha.execute(
           import.meta.env.VITE_RECAPTCHA_SITE_KEY,
           { action: "submit" }
         );
-      } catch (error) {
-        toast({
-          title: "reCAPTCHA error",
-          description: "Failed to generate token.",
-        });
-        setIsSubmitting(false);
-        return;
+      } else {
+        throw new Error("reCAPTCHA not loaded");
       }
-    } else {
+    } catch (error) {
       toast({
-        title: "reCAPTCHA not ready",
-        description: "Please wait a moment and try again.",
+        title: "reCAPTCHA error",
+        description: error.message || "Failed to generate token.",
       });
       setIsSubmitting(false);
       return;
