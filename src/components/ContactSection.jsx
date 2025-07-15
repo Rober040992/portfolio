@@ -8,7 +8,7 @@ import {
   Phone,
   Send,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 export const ContactSection = () => {
@@ -20,6 +20,14 @@ export const ContactSection = () => {
     message: "",
   });
   const { t } = useTranslation();
+
+  // Carga el script de reCAPTCHA v3 invisible al montar el componente
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = `https://www.google.com/recaptcha/api.js?render=${import.meta.env.VITE_RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   const handelSubmit = async (event) => {
     event.preventDefault();
@@ -38,6 +46,11 @@ export const ContactSection = () => {
 
     const form = event.target;
     const honeypotValue = form.honeypot.value;
+    // Ejecutamos reCAPTCHA v3
+    const token = await window.grecaptcha.execute(
+      import.meta.env.VITE_RECAPTCHA_SITE_KEY,
+      { action: "submit" }
+    );
 
     if (honeypotValue) {
       setIsSubmitting(false);
@@ -49,6 +62,7 @@ export const ContactSection = () => {
       email: formData.email,
       message: formData.message,
       honeypotValue: honeypotValue,
+      recaptchaToken: token,
     };
 
     try {

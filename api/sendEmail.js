@@ -25,6 +25,27 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Missing fields" });
   }
 
+  // Verificación del token reCAPTCHA
+  try {
+    const recaptchaRes = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+      }
+    );
+
+    const recaptchaData = await recaptchaRes.json();
+
+    if (!recaptchaData.success || recaptchaData.score < 0.5) {
+      return res.status(400).json({ error: "reCAPTCHA verification failed" });
+    }
+  } catch (err) {
+    console.error("reCAPTCHA error:", err);
+    return res.status(500).json({ error: "reCAPTCHA server error" });
+  }
+
   // Rate limit por IP
   const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
   const now = Date.now();
