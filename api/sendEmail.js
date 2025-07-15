@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Invalid email format" });
   }
 
-  const { name, email, message, honeypotValue } = req.body;
+  const { name, email, message, honeypotValue, recaptchaToken  } = req.body;
 
   // Honeypot check
   if (honeypotValue) {

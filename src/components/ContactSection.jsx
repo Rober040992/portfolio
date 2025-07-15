@@ -46,11 +46,15 @@ export const ContactSection = () => {
 
     const form = event.target;
     const honeypotValue = form.honeypot.value;
+    
     // Ejecutamos reCAPTCHA v3
-    const token = await window.grecaptcha.execute(
-      import.meta.env.VITE_RECAPTCHA_SITE_KEY,
-      { action: "submit" }
-    );
+    let token = "";
+    await window.grecaptcha.ready(async () => {
+      token = await window.grecaptcha.execute(
+        import.meta.env.VITE_RECAPTCHA_SITE_KEY,
+        { action: "submit" }
+      );
+    });
 
     if (honeypotValue) {
       setIsSubmitting(false);
