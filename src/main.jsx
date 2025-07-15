@@ -9,6 +9,8 @@ const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 // Promesa global para saber cuándo está listo reCaptcha
 export const recaptchaReady = new Promise((resolve, reject) => {
   if (!recaptchaSiteKey) {
+    // Esto debe verse en consola si hay un problema de entorno
+    console.error('No se ha definido VITE_RECAPTCHA_SITE_KEY');
     reject('No se ha definido VITE_RECAPTCHA_SITE_KEY');
     return;
   }

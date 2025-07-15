@@ -8,13 +8,22 @@ export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
-  const { name, email, message, honeypotValue, recaptchaToken  } = req.body;
+  const { name, email, message, honeypotValue, recaptchaToken } = req.body;
+
+  // Validación de variables de entorno
+  if (!process.env.RECAPTCHA_SECRET_KEY) {
+    console.error("Falta RECAPTCHA_SECRET_KEY en el entorno");
+    return res.status(500).json({ error: "Falta RECAPTCHA_SECRET_KEY en el entorno del backend" });
+  }
+
+  if (!recaptchaToken) {
+    return res.status(400).json({ error: "Falta el token de reCAPTCHA" });
+  }
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({ error: "Invalid email format" });
   }
-
 
   // Honeypot check
   if (honeypotValue) {
@@ -38,8 +47,11 @@ export default async function handler(req, res) {
 
     const recaptchaData = await recaptchaRes.json();
 
-    if (!recaptchaData.success || recaptchaData.score < 0.5) {
-      return res.status(400).json({ error: "reCAPTCHA verification failed" });
+    if (!recaptchaData.success) {
+      return res.status(400).json({ error: "reCAPTCHA verification failed", details: recaptchaData["error-codes"] });
+    }
+    if (typeof recaptchaData.score === "number" && recaptchaData.score < 0.5) {
+      return res.status(400).json({ error: "reCAPTCHA score too low", score: recaptchaData.score });
     }
   } catch (err) {
     console.error("reCAPTCHA error:", err);
