@@ -25,8 +25,24 @@ export const ContactSection = () => {
     event.preventDefault();
     setIsSubmitting(true);
 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address.",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     const form = event.target;
     const honeypotValue = form.honeypot.value;
+
+    if (honeypotValue) {
+      setIsSubmitting(false);
+      return; // es bot
+    }
 
     const payload = {
       name: formData.name,
