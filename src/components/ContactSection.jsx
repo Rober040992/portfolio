@@ -8,7 +8,7 @@ import {
   Phone,
   Send,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export const ContactSection = () => {
@@ -20,14 +20,6 @@ export const ContactSection = () => {
     message: "",
   });
   const { t } = useTranslation();
-
-  // Carga el script de reCAPTCHA v3 invisible al montar el componente
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${import.meta.env.VITE_RECAPTCHA_SITE_KEY}`;
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
 
   const handelSubmit = async (event) => {
     event.preventDefault();
@@ -46,19 +38,35 @@ export const ContactSection = () => {
 
     const form = event.target;
     const honeypotValue = form.honeypot.value;
-    
-    // Ejecutamos reCAPTCHA v3
-    let token = "";
-    await window.grecaptcha.ready(async () => {
-      token = await window.grecaptcha.execute(
-        import.meta.env.VITE_RECAPTCHA_SITE_KEY,
-        { action: "submit" }
-      );
-    });
 
     if (honeypotValue) {
       setIsSubmitting(false);
       return; // es bot
+    }
+    
+    let token = "";
+
+    if (window.grecaptcha && window.grecaptcha.execute) {
+      try {
+        token = await window.grecaptcha.execute(
+          import.meta.env.VITE_RECAPTCHA_SITE_KEY,
+          { action: "submit" }
+        );
+      } catch (error) {
+        toast({
+          title: "reCAPTCHA error",
+          description: "Failed to generate token.",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+    } else {
+      toast({
+        title: "reCAPTCHA not ready",
+        description: "Please wait a moment and try again.",
+      });
+      setIsSubmitting(false);
+      return;
     }
 
     const payload = {
