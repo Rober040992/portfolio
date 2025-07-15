@@ -43,11 +43,15 @@ export const ContactSection = () => {
       setIsSubmitting(false);
       return; // es bot
     }
-    
+
     let token = "";
 
     if (window.grecaptcha && window.grecaptcha.execute) {
       try {
+        await new Promise((resolve) => {
+          window.grecaptcha.ready(resolve);
+        });
+
         token = await window.grecaptcha.execute(
           import.meta.env.VITE_RECAPTCHA_SITE_KEY,
           { action: "submit" }
