@@ -15,7 +15,7 @@ export const Footer = () => {
         </a>
         . Customized and developed by Roberto Gómez.
       </p>
-      <a href="#hero" className="p-2 rounded-full bg-primary/10 hover:bg-primary/40 text-primary transition-colors max-sm:ml-auto max-sm:mt-2">
+      <a href="#hero" className="p-2 rounded-full bg-primary/10 hover:bg-primary/40 text-primary transition-colors max-sm:ml-auto max-sm:mt-2 mr-10">
         <ArrowUpCircleIcon/> Top
       </a>
     </footer>
