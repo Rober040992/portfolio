@@ -72,9 +72,22 @@ export const ContactSection = () => {
         body: JSON.stringify(payload),
       });
 
+      // Si la API responde con JSON válido, se muestra el mensaje personalizado.
+      // Si responde con texto o HTML inesperado (como el de Vercel o un fallo 500 feo), no crashea el frontend.
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Error sending message");
+        let errorMessage = "Unexpected error";
+
+        const contentType = response.headers.get("content-type") || "";
+
+        if (contentType.includes("application/json")) {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } else {
+          const text = await response.text();
+          errorMessage = text.slice(0, 100); // por si viene un HTML o texto plano largo
+        }
+
+        throw new Error(errorMessage);
       }
 
       setFormData({ name: "", email: "", message: "" });
