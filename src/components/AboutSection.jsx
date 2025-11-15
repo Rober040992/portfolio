@@ -21,9 +21,9 @@ export const AboutSection = () => {
                 {t("about.touch")}
               </a>
               <a
-                href="/CV Roberto.pdf"
+                href="/CV roberto Nov 2025.pdf"
                 className="ghost-button"
-                download="CV Roberto.pdf"
+                download="CV roberto Nov 2025.pdf"
               >
                 {t("about.download")}
               </a>

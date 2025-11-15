@@ -4,8 +4,11 @@ import { useTranslation } from "react-i18next";
 
 const skills = [
   { name: "JavaScript (ES6+)", level: 65, category: "Fullstack" },
+  { name: "TypeScript", level: 45, category: "Fullstack" },
   { name: "Node.js", level: 45, category: "Backend" },
-  { name: "React", level: 30, category: "Frontend" },
+  { name: "REST APIs / GraphQL", level: 60, category: "Backend" },
+  { name: "React", level: 60, category: "Frontend" },
+  { name: "Next.js", level: 30, category: "Frontend" },
   { name: "MongoDB", level: 40, category: "Backend" },
   { name: "SQL", level: 20, category: "Backend" },
   { name: "HTML/CSS", level: 70, category: "Frontend" },
@@ -13,12 +16,13 @@ const skills = [
   { name: "Tailwind CSS", level: 50, category: "Frontend" },
   { name: "Mongoose", level: 40, category: "Backend" },
   { name: "Zod", level: 50, category: "Backend" },
+  { name: "Web Scrapping", level: 30, category: "Backend" },
   { name: "Axios", level: 40, category: "Frontend" },
   { name: "Socket.io / WebSockets", level: 25, category: "Fullstack" },
   { name: "Git y GitHub", level: 65, category: "Tools" },
+  { name: "Docker/Docker Compose", level: 20, category: "DevOps" },
   { name: "AWS EC2", level: 30, category: "DevOps" },
   { name: "Bash", level: 20, category: "DevOps" },
-  { name: "TypeScript", level: 15, category: "Frontend" },
   { name: "VS Code", level: 80, category: "Tools" },
 ];
 
