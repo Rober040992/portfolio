@@ -58,9 +58,13 @@
         "title": "Paquete NPM",
         "description": "Un scaffold ligero y funcional para crear APIs con la arquitectura MEN (MongoDB - Express - Node.js) pensado para quienes quieren empezar rápido, con una base sólida y limpia."
       },
-      "calculator": {
-        "title": "Calculadora",
-        "description": "Mini projecto para la práctica de JS, HTML/CSS vanilla."
+      "TalentScope (Back-end)": {
+        "title": "TalentScope (Back-end)",
+        "description": "TalentScope es una plataforma backend diseñada para importar, normalizar y exponer ofertas de trabajo mediante una arquitectura modular basada en microservicios."
+      },
+      "ScrapComponentes": {
+        "title": "ScrapComponentes",
+        "description": "Scrapccomponentes es un proyecto de código abierto que rastrea los precios de los productos de PCComponentes.com en tiempo real."
       }
     },
     "chekGit": "Todos mis proyectos en",

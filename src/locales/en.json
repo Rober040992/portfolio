@@ -58,9 +58,14 @@
         "title": "NPM package",
         "description": "A lightweight and functional scaffold for building APIs using the MEN architecture (MongoDB - Express - Node.js), designed for those who want to get started quickly with a clean and solid foundation. "
       },
-      "calculator": {
-        "title": "Calculator",
-        "description": "It is a mini project in order to practicing vanilla JS and HTML/CSS"
+      "TalentScope (Back-end)": {
+        "title": "TalentScope (Back-end)",
+        "description": "TalentScope is a backend platform designed to import, normalize, and expose job postings using a modular, microservices-based architecture"
+      }
+      ,
+      "ScrapComponentes": {
+        "title": "ScrapComponentes",
+        "description": "Scrapccomponentes is an open-source project that tracks product prices from PCComponentes.com in real time"
       }
     },
     "chekGit": "All my projects in ",
