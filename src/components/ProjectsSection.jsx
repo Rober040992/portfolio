@@ -29,7 +29,7 @@ const projects = [
   {
     id: 4,
     key: "ScrapComponentes",
-    image: "/projects/query-capture.png",
+    image: "",
     tags: ["Web Scrapping", "Node", "Node-cron", "MongoDB", "Puppeteer", "Redis", "Rate limiting", "Cache"],
     demoUrl: "#",
     githubUrl: "https://github.com/Rober040992/back_scrapccomponetes",
