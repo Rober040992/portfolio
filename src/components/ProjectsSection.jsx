@@ -20,11 +20,19 @@ const projects = [
   },
   {
     id: 3,
-    key: "calculator",
-    image: "/projects/calculator.png",
-    tags: ["JavaScript", "HTML", "CSS"],
+    key: "TalentScope (Back-end)",
+    image: "/projects/query-capture.png",
+    tags: ["GraphQL", "Node", "Docker", "Monorepo", "MongoDB", "Render"],
+    demoUrl: "https://talentscope-api.onrender.com",
+    githubUrl: "https://github.com/Rober040992/TalentScope",
+  },
+  {
+    id: 4,
+    key: "ScrapComponentes",
+    image: "/projects/query-capture.png",
+    tags: ["Web Scrapping", "Node", "Node-cron", "MongoDB", "Puppeteer", "Redis", "Rate limiting", "Cache"],
     demoUrl: "#",
-    githubUrl: "https://github.com/Rober040992/MyOwn-JS-Calculator",
+    githubUrl: "https://github.com/Rober040992/back_scrapccomponetes",
   }
 ];
 
